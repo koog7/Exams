@@ -5,7 +5,7 @@ import { UserReducer } from "../containers/Thunk/AuthFetch";
 import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist/es/constants";
 
 const usersPersistConfig = {
-    key: 'cocktailUserData:User',
+    key: 'exam:User',
     storage,
     whitelist: ['user'],
 };
