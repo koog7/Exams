@@ -86,7 +86,7 @@ export const PhotoSlice = createSlice({
             state.loader = true;
             state.error = null;
         });
-        builder.addCase(deletePhoto.fulfilled, (state: PhotoState , action) => {
+        builder.addCase(deletePhoto.fulfilled, (state: PhotoState) => {
             state.loader = false;
             state.error = null;
         });

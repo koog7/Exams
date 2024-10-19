@@ -42,9 +42,11 @@ const UserProfile = () => {
         navigate(`/user/${selectedPhoto?.userId._id}`);
     };
 
+    const displayName = usersPhoto?.[0]?.userId?.displayName;
+
     return (
         <div >
-            <h1 style={{marginLeft:'35px'}}>{userData?.displayName}'s gallery</h1>
+            <h1 style={{marginLeft:'35px'}}>{displayName? displayName : null}'s gallery</h1>
             <div className="photo-gallery">
                 {usersPhoto?.map((photo) => (
                     <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title} _id={photo._id} />
