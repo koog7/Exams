@@ -1,6 +1,6 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import { persistor, store } from './app/store.ts';
@@ -17,4 +17,4 @@ createRoot(document.getElementById('root')!).render(
             </Provider>
         </PersistGate>
     </BrowserRouter>,
-)
+);

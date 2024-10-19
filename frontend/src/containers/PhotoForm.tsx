@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 const PhotoForm = () => {
 
-    const urlFile = useRef(null)
+    const urlFile = useRef(null);
     const [file, setFile] = useState<File | null>(null);
     const [text, setText] = useState<string>('');
     const [isValid, setIsValid] = useState(false);
-    const userData = useSelector((state: RootState) => state.User.user)
+    const userData = useSelector((state: RootState) => state.User.user);
 
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
@@ -23,14 +23,14 @@ const PhotoForm = () => {
     }, [text, file]);
 
     const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const fileInput = e.target.files
+        const fileInput = e.target.files;
 
         if (fileInput && fileInput[0]) {
-            setFile(fileInput[0])
+            setFile(fileInput[0]);
         } else {
-            setFile(null)
+            setFile(null);
         }
-    }
+    };
 
     const onFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value);
@@ -39,9 +39,9 @@ const PhotoForm = () => {
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if(!userData) return;
-        await dispatch(postPhoto({title: text , userId: userData._id , photo: file}))
-        navigate('/')
-    }
+        await dispatch(postPhoto({title: text , userId: userData._id , photo: file}));
+        navigate('/');
+    };
 
     return (
         <div className="form-container">

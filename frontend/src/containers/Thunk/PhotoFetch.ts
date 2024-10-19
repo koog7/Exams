@@ -25,21 +25,21 @@ const initialState: PhotoState = {
     photo:[],
     loader: false,
     error: null,
-}
+};
 
 export const getAllPhoto = createAsyncThunk<PhotoProps[] , void>('photos/getAll' , async () =>{
-    const response = await axiosAPI.get('/photo')
+    const response = await axiosAPI.get('/photo');
     return response.data;
-})
+});
 
 export const deletePhoto = createAsyncThunk<void , string>('photos/delete' , async (id:string) =>{
-    await axiosAPI.delete(`/photo/${id}`)
-})
+    await axiosAPI.delete(`/photo/${id}`);
+});
 
 export const postPhoto = createAsyncThunk<void, PhotoData , { rejectValue: string }>('photos/createPost', async (PhotoData ,{rejectWithValue}) =>{
     try{
         const formData = new FormData();
-        formData.append('userId', PhotoData.userId)
+        formData.append('userId', PhotoData.userId);
         formData.append('title' , PhotoData.title);
 
         if (PhotoData.photo) {
@@ -50,7 +50,7 @@ export const postPhoto = createAsyncThunk<void, PhotoData , { rejectValue: strin
     }catch(error){
         return rejectWithValue(`An unknown ${error} occurred`);
     }
-})
+});
 
 export const PhotoSlice = createSlice({
     name: 'Photo',
@@ -95,6 +95,6 @@ export const PhotoSlice = createSlice({
             state.error = action.payload as string;
         });
     }
-})
+});
 
 export const PhotosReducer = PhotoSlice.reducer;

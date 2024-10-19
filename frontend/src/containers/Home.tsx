@@ -11,7 +11,7 @@ const Home = () => {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    const AllPhotos = useSelector((state: RootState) => state.Photo.photo)
+    const AllPhotos = useSelector((state: RootState) => state.Photo.photo);
     const [selectedPhoto, setSelectedPhoto] = useState<PhotoProps | null>(null);
     const { id } = useParams();
     const navigate = useNavigate();

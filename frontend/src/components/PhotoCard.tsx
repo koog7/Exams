@@ -16,13 +16,13 @@ interface Photo {
 
 const PhotoCard: React.FC<Photo> = ({_id , title , photo , userId}) => {
 
-    const userData = useSelector((state: RootState) => state.User.user)
+    const userData = useSelector((state: RootState) => state.User.user);
     const dispatch = useDispatch<AppDispatch>();
 
     const deleteCard = async (id:string) => {
-        await dispatch(deletePhoto(id))
-        location.reload()
-    }
+        await dispatch(deletePhoto(id));
+        location.reload();
+    };
 
     return (
         <div key={_id} className="photo-card" style={{width:'300px'}}>

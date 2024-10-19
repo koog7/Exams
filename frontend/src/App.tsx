@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import Navbar from './components/Navbar.tsx';
 import { Route, Routes } from 'react-router-dom';
 import Home from './containers/Home.tsx';
@@ -13,7 +13,7 @@ import NotFound from './components/NotFound.tsx';
 
 const App = () => {
 
-    const loader = useSelector((state: RootState) => state.Photo.loader)
+    const loader = useSelector((state: RootState) => state.Photo.loader);
 
     return (
         <>
@@ -54,7 +54,7 @@ const App = () => {
                 </div>
             </div>
         </>
-    )
+    );
 };
 
-export default App
+export default App;
