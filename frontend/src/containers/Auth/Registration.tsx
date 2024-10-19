@@ -52,8 +52,8 @@ const Registration = () => {
     }
 
     return (
-        <div style={{marginLeft: '470px'}}>
-            <h2>Sign Up</h2>
+        <div style={{marginLeft: '440px'}}>
+            <h2 style={{marginLeft:'17px'}}>Sign Up</h2>
             <Box
                 component="form"
                 sx={{
@@ -105,14 +105,14 @@ const Registration = () => {
                     }}
                 />
 
-                <input ref={urlFile} accept="image/*" onChange={onFileChange} type={"file"} style={{ marginTop: '20px' }} required />
+                <input ref={urlFile} accept="image/*" onChange={onFileChange} type={"file"} style={{ marginTop: '20px',  color:'black' }} required />
                 <Button
                     variant="contained"
                     sx={{
-                        backgroundColor: 'white',
+                        backgroundColor: '#6CB4EE',
                         color: 'black',
                         '&:hover': {
-                            backgroundColor: '#f0f0f0',
+                            backgroundColor: '#63aae0',
                         },
                     }}
                     onClick={submitData}

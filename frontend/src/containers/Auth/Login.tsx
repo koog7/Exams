@@ -88,10 +88,10 @@ const Login = () => {
                 <Button
                     variant="contained"
                     sx={{
-                      backgroundColor: 'white',
+                      backgroundColor: '#6CB4EE',
                       color: 'black',
                       '&:hover': {
-                        backgroundColor: '#f0f0f0',
+                        backgroundColor: '#63aae0',
                       },
                     }}
                     onClick={submitData}
