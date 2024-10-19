@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import authUserRouter from './router/authUserRouter';
+import photoRouter from './router/photoRouter';
 
 const app = express()
 const port = 8000;
@@ -9,7 +10,8 @@ const port = 8000;
 app.use(express.json());
 app.use(cors())
 app.use(express.static('public'));
-app.use('/' , authUserRouter)
+app.use('/users' , authUserRouter)
+app.use('/photo', photoRouter);
 
 const run = async () => {
     try{
