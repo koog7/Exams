@@ -3,6 +3,7 @@ import {persistReducer, persistStore} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { UserReducer } from "../containers/Thunk/AuthFetch";
 import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist/es/constants";
+import { PhotosReducer } from '../containers/Thunk/PhotoFetch.ts';
 
 const usersPersistConfig = {
     key: 'exam:User',
@@ -12,6 +13,7 @@ const usersPersistConfig = {
 
 const rootReducer = combineReducers({
     User: persistReducer(usersPersistConfig, UserReducer),
+    Photo: PhotosReducer,
 });
 
 export const store = configureStore({

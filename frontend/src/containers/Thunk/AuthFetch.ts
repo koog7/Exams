@@ -35,6 +35,7 @@ export const loginUser = createAsyncThunk<User , LoginData , { rejectValue: stri
         formData.append('displayName', loginData.displayName);
         formData.append('password', loginData.password);
 
+
         if (loginData.avatar) {
             formData.append('avatar', loginData.avatar);
         }

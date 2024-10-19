@@ -1,4 +1,8 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../app/store.ts';
+import { postPhoto } from './Thunk/PhotoFetch.ts';
+import { useNavigate } from 'react-router-dom';
 
 const PhotoForm = () => {
 
@@ -6,7 +10,10 @@ const PhotoForm = () => {
     const [file, setFile] = useState<File | null>(null);
     const [text, setText] = useState<string>('');
     const [isValid, setIsValid] = useState(false);
+    const userData = useSelector((state: RootState) => state.User.user)
 
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
     useEffect(() => {
         if (text.length > 0 && file) {
             setIsValid(true);
@@ -29,10 +36,11 @@ const PhotoForm = () => {
         setText(e.target.value);
     };
 
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        console.log(text , file);
+        if(!userData) return;
+        await dispatch(postPhoto({title: text , userId: userData._id , photo: file}))
+        navigate('/')
     }
 
     return (
