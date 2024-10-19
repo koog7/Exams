@@ -7,6 +7,7 @@ import Registration from './containers/Auth/Registration.tsx';
 import PhotoForm from './containers/PhotoForm.tsx';
 import UserProfile from './containers/UserProfile.tsx';
 
+
 const App = () => {
 
     return (

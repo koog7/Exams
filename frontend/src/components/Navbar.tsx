@@ -82,6 +82,7 @@ const Navbar = () => {
                                     }}
                                 >
                                     <p style={{ marginLeft: '15px',width:'150px' }}><strong>Your role: {userData?.role}</strong></p>
+                                    <MenuItem component={Link} to={`/user/${userData._id}`}>My photos</MenuItem>
                                     <MenuItem component={Link} to={'/formCreate'}>Create publication</MenuItem>
                                     <MenuItem onClick={logOut}>Logout</MenuItem>
                                 </Menu>

@@ -11,6 +11,7 @@ const UserProfile = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const AllPhotos = useSelector((state: RootState) => state.Photo.photo)
+    const userData = useSelector((state: RootState) => state.User.user)
     const [usersPhoto, setUsersPhoto] = useState<PhotoProps[] | null>(null);
     const [selectedPhoto, setSelectedPhoto] = useState<PhotoProps | null>(null);
 
@@ -22,12 +23,10 @@ const UserProfile = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (id) {
-            const photo = AllPhotos.filter(photo => photo.userId._id === id);
-            if(!photo) return;
-            setUsersPhoto(photo);
-        }
-    }, [id, AllPhotos]);
+        const photo = AllPhotos.filter(photo => photo.userId._id === id);
+        if(!photo) return;
+        setUsersPhoto(photo);
+    }, [AllPhotos]);
 
 
     useEffect(() => {
@@ -44,16 +43,19 @@ const UserProfile = () => {
     };
 
     return (
-        <div className="photo-gallery">
-            {usersPhoto?.map((photo) => (
-                <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title} _id={photo._id} />
-            ))}
-            {selectedPhoto && (
-                <PhotoModal
-                    photo={selectedPhoto}
-                    onClose={closeModal}
-                />
-            )}
+        <div >
+            <h1 style={{marginLeft:'35px'}}>{userData?.displayName}'s gallery</h1>
+            <div className="photo-gallery">
+                {usersPhoto?.map((photo) => (
+                    <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title} _id={photo._id} />
+                ))}
+                {selectedPhoto && (
+                    <PhotoModal
+                        photo={selectedPhoto}
+                        onClose={closeModal}
+                    />
+                )}
+            </div>
         </div>
     );
 };
