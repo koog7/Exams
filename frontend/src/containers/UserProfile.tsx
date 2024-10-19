@@ -11,7 +11,6 @@ const UserProfile = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const AllPhotos = useSelector((state: RootState) => state.Photo.photo)
-    const userData = useSelector((state: RootState) => state.User.user)
     const [usersPhoto, setUsersPhoto] = useState<PhotoProps[] | null>(null);
     const [selectedPhoto, setSelectedPhoto] = useState<PhotoProps | null>(null);
 

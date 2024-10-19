@@ -6,13 +6,21 @@ import Login from './containers/Auth/Login.tsx';
 import Registration from './containers/Auth/Registration.tsx';
 import PhotoForm from './containers/PhotoForm.tsx';
 import UserProfile from './containers/UserProfile.tsx';
+import { useSelector } from 'react-redux';
+import { RootState } from './app/store.ts';
+import NotFound from './components/NotFound.tsx';
 
 
 const App = () => {
 
+    const loader = useSelector((state: RootState) => state.Photo.loader)
+
     return (
         <>
             <div>
+                <div id="loader-container" style={{ display: loader ? 'block' : 'none' }}>
+                    <div className="loader"></div>
+                </div>
                 <div>
                     <Navbar />
                 </div>
@@ -20,6 +28,9 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={(
                             <Home />
+                        )} />
+                        <Route path="*" element={(
+                            <NotFound />
                         )} />
                         <Route path="/photo/:id" element={(
                             <Home />
