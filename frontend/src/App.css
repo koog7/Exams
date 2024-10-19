@@ -2,3 +2,63 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  height: 35vh;
+  margin-top: 50px;
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-input,
+.form-file-input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-file-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-file-input {
+  padding: 5px;
+  color: black;
+}
+
+.form-submit {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.form-submit:disabled {
+  background-color: #ddd;
+}
+

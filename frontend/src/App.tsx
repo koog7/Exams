@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './containers/Home.tsx';
 import Login from './containers/Auth/Login.tsx';
 import Registration from './containers/Auth/Registration.tsx';
+import PhotoForm from './containers/PhotoForm.tsx';
 
 function App() {
 
@@ -24,6 +25,9 @@ function App() {
                   )} />
                   <Route path="/registration" element={(
                       <Registration />
+                  )} />
+                  <Route path="/formCreate" element={(
+                      <PhotoForm />
                   )} />
               </Routes>
           </div>
