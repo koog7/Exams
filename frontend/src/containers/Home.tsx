@@ -36,11 +36,14 @@ const Home = () => {
     return (
         <div>
             {AllPhotos.length === 0 && (
-                <h1>List of photos are now empty , you can be <NavLink to={'/formCreate'}>first</NavLink></h1>
+                <div style={{ width: '100%', textAlign: 'center' }}>
+                    <h1 style={{ textAlign: 'center' }}>List of photos are empty , you can be <NavLink to={'/formCreate'}>first</NavLink></h1>
+                </div>
             )}
-                <div className="photo-gallery">
+            <div className="photo-gallery">
                 {AllPhotos.map((photo) => (
-                    <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title} _id={photo._id}  />
+                    <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title}
+                               _id={photo._id} />
                 ))}
 
                 {selectedPhoto && (

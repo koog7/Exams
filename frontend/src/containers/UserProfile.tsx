@@ -42,18 +42,15 @@ const UserProfile = () => {
         navigate(`/user/${selectedPhoto?.userId._id}`);
     };
 
-    useEffect(() => {
-        if(usersPhoto?.length === 0){
-            navigate(`/`);
-        }
-    }, [userData]);
     const displayName = usersPhoto?.[0]?.userId?.displayName;
 
     return (
         <div >
-            <h1 style={{marginLeft:'35px'}}>{displayName? displayName : null}'s gallery</h1>
+            {displayName &&(<h1 style={{marginLeft:'35px'}}>{displayName? displayName : null}'s gallery</h1>)}
             {usersPhoto?.length === 0 && (
-                <h1>List of photos are now empty , you can be <NavLink to={'/formCreate'}>first</NavLink></h1>
+                <div style={{ width: '100%', textAlign: 'center' }}>
+                    <h1 style={{ textAlign: 'center' }}>List of photos are empty , you can be <NavLink to={'/formCreate'}>first</NavLink></h1>
+                </div>
             )}
             <div className="photo-gallery">
                 {usersPhoto?.map((photo) => (

@@ -34,7 +34,7 @@ const PhotoCard: React.FC<Photo> = ({_id , title , photo , userId}) => {
                 <p className="photo-card__uploader">Uploaded by: {userId.displayName}</p>
             </Link>
 
-            {(userData?._id === userId._id && location.pathname === `/user/${userId._id}`) && (
+            {(userData?._id === userId._id && location.pathname === `/user/${userId._id}` && userData?.role !== 'admin') && (
                 <button style={{backgroundColor:'red' , padding:'10px' , borderRadius:'10px' , border:'none' , marginLeft:'10px'}} onClick={() => deleteCard(_id)} className="photo-card__delete-button">
                     Удалить
                 </button>
