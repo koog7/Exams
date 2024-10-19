@@ -32,6 +32,10 @@ export const getAllPhoto = createAsyncThunk<PhotoProps[] , void>('photos/getAll'
     return response.data;
 })
 
+export const deletePhoto = createAsyncThunk<void , string>('photos/delete' , async (id:string) =>{
+    await axiosAPI.delete(`/photo/${id}`)
+})
+
 export const postPhoto = createAsyncThunk<void, PhotoData , { rejectValue: string }>('photos/createPost', async (PhotoData ,{rejectWithValue}) =>{
     try{
         const formData = new FormData();
@@ -75,6 +79,18 @@ export const PhotoSlice = createSlice({
             state.error = null;
         });
         builder.addCase(getAllPhoto.rejected, (state: PhotoState , action) => {
+            state.loader = false;
+            state.error = action.payload as string;
+        });
+        builder.addCase(deletePhoto.pending, (state: PhotoState) => {
+            state.loader = true;
+            state.error = null;
+        });
+        builder.addCase(deletePhoto.fulfilled, (state: PhotoState , action) => {
+            state.loader = false;
+            state.error = null;
+        });
+        builder.addCase(deletePhoto.rejected, (state: PhotoState , action) => {
             state.loader = false;
             state.error = action.payload as string;
         });
