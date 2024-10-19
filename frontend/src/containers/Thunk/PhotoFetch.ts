@@ -6,7 +6,7 @@ interface PhotoData {
     userId: string;
     photo: File | null;
 }
-interface PhotoProps {
+export interface PhotoProps {
     _id: string;
     title: string;
     photo:string;

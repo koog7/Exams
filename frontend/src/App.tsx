@@ -6,34 +6,36 @@ import Login from './containers/Auth/Login.tsx';
 import Registration from './containers/Auth/Registration.tsx';
 import PhotoForm from './containers/PhotoForm.tsx';
 
-function App() {
+const App = () => {
 
-
-  return (
-    <>
-      <div>
-          <div>
-              <Navbar />
-          </div>
-          <div>
-              <Routes>
-                  <Route path="/" element={(
-                      <Home />
-                  )} />
-                  <Route path="/login" element={(
-                      <Login />
-                  )} />
-                  <Route path="/registration" element={(
-                      <Registration />
-                  )} />
-                  <Route path="/formCreate" element={(
-                      <PhotoForm />
-                  )} />
-              </Routes>
-          </div>
-      </div>
-    </>
-  )
-}
+    return (
+        <>
+            <div>
+                <div>
+                    <Navbar />
+                </div>
+                <div>
+                    <Routes>
+                        <Route path="/" element={(
+                            <Home />
+                        )} />
+                        <Route path="/photo/:id" element={(
+                            <Home />
+                        )} />
+                        <Route path="/login" element={(
+                            <Login />
+                        )} />
+                        <Route path="/registration" element={(
+                            <Registration />
+                        )} />
+                        <Route path="/formCreate" element={(
+                            <PhotoForm />
+                        )} />
+                    </Routes>
+                </div>
+            </div>
+        </>
+    )
+};
 
 export default App
