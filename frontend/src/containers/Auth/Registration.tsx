@@ -3,7 +3,8 @@ import { AppDispatch, RootState } from '../../app/store.ts';
 import { useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Box, Button, TextField } from '@mui/material';
-import { loginUser } from '../Thunk/AuthFetch.ts';
+import { googleLogin, loginUser } from '../Thunk/AuthFetch.ts';
+import { GoogleLogin } from '@react-oauth/google';
 
 
 const Registration = () => {
@@ -49,6 +50,11 @@ const Registration = () => {
         } else {
             setFile(null);
         }
+    };
+
+    const googleLoginHandler = async (credential: string) => {
+        await dispatch(googleLogin(credential)).unwrap();
+        navigate('/');
     };
 
     return (
@@ -123,6 +129,11 @@ const Registration = () => {
                 {error && (
                     <div style={{color:'red'}}>{error}</div>
                 )}
+                <GoogleLogin theme={"filled_black"}  onSuccess={(credentialResponse) =>{
+                    if (credentialResponse.credential) {
+                        void googleLoginHandler(credentialResponse.credential);
+                    }
+                }}/>
             </Box>
         </div>
     );
