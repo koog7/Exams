@@ -45,7 +45,7 @@ const Navbar = () => {
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{display:'flex', flexGrow: 1 , justifyContent: 'space-between' }}>
                         <NavLink to={'/'} style={{textDecoration:'none', color:'white'}}>
-                            Exam
+                            Photo Gallery
                         </NavLink>
                     </Typography>
                     {userData? (

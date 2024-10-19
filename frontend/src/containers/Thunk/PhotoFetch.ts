@@ -6,9 +6,18 @@ interface PhotoData {
     userId: string;
     photo: File | null;
 }
+interface PhotoProps {
+    _id: string;
+    title: string;
+    photo:string;
+    userId: {
+        _id: string;
+        displayName: string;
+    };
+}
 
 interface PhotoState {
-    photo: PhotoData[];
+    photo: PhotoProps[];
     loader: boolean;
     error: string | null;
 }
@@ -17,6 +26,11 @@ const initialState: PhotoState = {
     loader: false,
     error: null,
 }
+
+export const getAllPhoto = createAsyncThunk<PhotoProps[] , void>('photos/getAll' , async () =>{
+    const response = await axiosAPI.get('/photo')
+    return response.data;
+})
 
 export const postPhoto = createAsyncThunk<void, PhotoData , { rejectValue: string }>('photos/createPost', async (PhotoData ,{rejectWithValue}) =>{
     try{
@@ -48,6 +62,19 @@ export const PhotoSlice = createSlice({
             state.error = null;
         });
         builder.addCase(postPhoto.rejected, (state: PhotoState , action) => {
+            state.loader = false;
+            state.error = action.payload as string;
+        });
+        builder.addCase(getAllPhoto.pending, (state: PhotoState) => {
+            state.loader = true;
+            state.error = null;
+        });
+        builder.addCase(getAllPhoto.fulfilled, (state: PhotoState , action) => {
+            state.photo = action.payload;
+            state.loader = false;
+            state.error = null;
+        });
+        builder.addCase(getAllPhoto.rejected, (state: PhotoState , action) => {
             state.loader = false;
             state.error = action.payload as string;
         });

@@ -62,3 +62,33 @@ form {
   background-color: #ddd;
 }
 
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.photo-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.photo-card__image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.photo-card__title {
+  font-size: 1.5rem;
+  margin: 12px 0;
+}
+
+.photo-card__uploader {
+  color: #666;
+  margin: 8px 0;
+}
