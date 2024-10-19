@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from '../app/store.ts';
 import { useEffect, useState } from 'react';
 import { getAllPhoto, PhotoProps } from './Thunk/PhotoFetch.ts';
 import PhotoCard from '../components/PhotoCard.tsx';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import PhotoModal from '../components/PhotoModal.tsx';
 
 
@@ -34,17 +34,22 @@ const Home = () => {
     };
 
     return (
-        <div className="photo-gallery">
-            {AllPhotos.map((photo) => (
-                <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title} _id={photo._id}  />
-            ))}
-
-            {selectedPhoto && (
-                <PhotoModal
-                    photo={selectedPhoto}
-                    onClose={closeModal}
-                />
+        <div>
+            {AllPhotos.length === 0 && (
+                <h1>List of photos are now empty , you can be <NavLink to={'/formCreate'}>first</NavLink></h1>
             )}
+                <div className="photo-gallery">
+                {AllPhotos.map((photo) => (
+                    <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title} _id={photo._id}  />
+                ))}
+
+                {selectedPhoto && (
+                    <PhotoModal
+                        photo={selectedPhoto}
+                        onClose={closeModal}
+                    />
+                )}
+            </div>
         </div>
     );
 };

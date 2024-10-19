@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAllPhoto, PhotoProps } from './Thunk/PhotoFetch.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../app/store.ts';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import PhotoCard from '../components/PhotoCard.tsx';
 import PhotoModal from '../components/PhotoModal.tsx';
 
@@ -42,11 +42,19 @@ const UserProfile = () => {
         navigate(`/user/${selectedPhoto?.userId._id}`);
     };
 
+    useEffect(() => {
+        if(usersPhoto?.length === 0){
+            navigate(`/`);
+        }
+    }, [userData]);
     const displayName = usersPhoto?.[0]?.userId?.displayName;
 
     return (
         <div >
             <h1 style={{marginLeft:'35px'}}>{displayName? displayName : null}'s gallery</h1>
+            {usersPhoto?.length === 0 && (
+                <h1>List of photos are now empty , you can be <NavLink to={'/formCreate'}>first</NavLink></h1>
+            )}
             <div className="photo-gallery">
                 {usersPhoto?.map((photo) => (
                     <PhotoCard photo={photo.photo} key={photo._id} userId={photo.userId} title={photo.title} _id={photo._id} />
