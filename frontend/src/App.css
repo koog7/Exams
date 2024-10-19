@@ -136,3 +136,11 @@ form {
 .modal-close-button:hover {
   background-color: #0056b3;
 }
+
+.photo-card__link{
+  display: inline-block;
+  text-decoration: none;
+}
+.photo-card__link:hover{
+  text-decoration: underline white;
+}

@@ -5,6 +5,7 @@ import Home from './containers/Home.tsx';
 import Login from './containers/Auth/Login.tsx';
 import Registration from './containers/Auth/Registration.tsx';
 import PhotoForm from './containers/PhotoForm.tsx';
+import UserProfile from './containers/UserProfile.tsx';
 
 const App = () => {
 
@@ -21,6 +22,12 @@ const App = () => {
                         )} />
                         <Route path="/photo/:id" element={(
                             <Home />
+                        )} />
+                        <Route path="/photo/user/:id" element={(
+                            <UserProfile />
+                        )} />
+                        <Route path="/user/:id" element={(
+                            <UserProfile />
                         )} />
                         <Route path="/login" element={(
                             <Login />
