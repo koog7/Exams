@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 interface Photo {
     _id: string;
     title: string;
@@ -17,7 +19,7 @@ const PhotoModal: React.FC<PhotoModalProps> = ({ photo, onClose }) => {
         <div className="modal-overlay">
             <div className="modal-content">
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <h2>{photo.title} </h2><span>Uploaded by: {photo.userId.displayName}</span>
+                    <h2>{photo.title} </h2><span>Uploaded by:<NavLink style={{textDecoration:'underline black' , color:'black'}} to={`/user/${photo.userId._id}`} >{photo.userId.displayName}</NavLink></span>
                 </div>
 
                 <img

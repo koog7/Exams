@@ -7,8 +7,6 @@ import bcrypt from 'bcrypt';
 import { OAuth2Client } from 'google-auth-library';
 import config from '../config';
 
-
-
 const authUserRouter = express.Router();
 authUserRouter.use(express.json());
 const googleClient = new OAuth2Client(config.google.clientId);
@@ -21,9 +19,6 @@ authUserRouter.post('/' , imagesUpload.single('avatar') , async (req, res, next 
       return res.status(400).send({ message: 'Email already taken' });
     }
 
-    if (existingUser) {
-      return res.status(400).send({ message: 'Display name already taken' });
-    }
     const user = new User({
       email: req.body.email,
       displayName: req.body.displayName,
